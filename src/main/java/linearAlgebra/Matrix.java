@@ -1,9 +1,11 @@
 package linearAlgebra;
 
-import java.util.ArrayList;
-
 public class Matrix {
     public double[][] generateMat(int size) {
+        if (size <= 0) {
+            return null;
+        }
+
         double[][] myMat = new double[size][size];
 
         for (int i = 0; i < myMat.length; i++) {
@@ -56,7 +58,7 @@ public class Matrix {
 
     private void printRow(int[] myRow) {
         for (int i = 0; i < myRow.length; i++) {
-            System.out.print(myRow[i]+"\t");
+            System.out.print(myRow[i] + "\t");
         }
     }
 }
