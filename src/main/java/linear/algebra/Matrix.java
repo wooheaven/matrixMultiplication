@@ -1,9 +1,9 @@
-package linearAlgebra;
+package linear.algebra;
 
 public class Matrix {
-    public double[][] generateMat(int size) {
+    public double[][] generateMat(int size) throws MatrixSizeThrowable {
         if (size <= 0) {
-            return null;
+            throw new MatrixSizeThrowable("Matrix size should be more than 0. And the current size is " + size);
         }
 
         double[][] myMat = new double[size][size];

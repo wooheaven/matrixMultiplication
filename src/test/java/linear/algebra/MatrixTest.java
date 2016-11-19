@@ -1,7 +1,7 @@
-import linearAlgebra.Matrix;
+package linear.algebra;
+
 import org.junit.Before;
 import org.junit.Test;
-
 import org.springframework.util.StopWatch;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,10 +14,11 @@ public class MatrixTest {
     private StopWatch st = new StopWatch("Matrix Multiplication");
 
     @Before
-    public void setUp() {
+    public void setUp() throws MatrixSizeThrowable {
         aMat = mat.generateMat(1000);
         bMat = mat.generateMat(1000);
     }
+
     @Test
     public void matrixMul() throws Exception {
         st.start("ijk");
