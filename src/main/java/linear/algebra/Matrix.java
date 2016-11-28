@@ -25,7 +25,7 @@ public class Matrix {
     }
 
     public double[][] ijkMatMul(double[][] aMat, double[][] bMat) throws MatrixSizeThrowable {
-        if(aMat[0].length != bMat.length){
+        if (aMat[0].length != bMat.length) {
             throw new MatrixSizeThrowable("aMat colmunSize should be same bMat rowSize.\n"
                     + "aMat columnSize = " + aMat[0].length + "\n"
                     + "bMat rowSize = " + bMat.length);
@@ -46,7 +46,7 @@ public class Matrix {
     }
 
     public double[][] ikjMatMul(double[][] aMat, double[][] bMat) throws MatrixSizeThrowable {
-        if(aMat[0].length != bMat.length){
+        if (aMat[0].length != bMat.length) {
             throw new MatrixSizeThrowable("aMat colmunSize should be same bMat rowSize.\n"
                     + "aMat columnSize = " + aMat[0].length + "\n"
                     + "bMat rowSize = " + bMat.length);
