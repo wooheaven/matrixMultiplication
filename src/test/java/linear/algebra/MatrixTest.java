@@ -15,12 +15,12 @@ public class MatrixTest {
 
     @Before
     public void setUp() throws MatrixSizeThrowable {
-        aMat = mat.generateMat(1000);
-        bMat = mat.generateMat(1000);
+        aMat = mat.generateMat(300, 200);
+        bMat = mat.generateMat(200, 300);
     }
 
     @Test
-    public void matrixMul() throws Exception {
+    public void matrixMul() throws MatrixSizeThrowable {
         st.start("ijk");
         double[][] cMat = mat.ijkMatMul(aMat, bMat);
         st.stop();
