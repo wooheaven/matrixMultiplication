@@ -24,13 +24,18 @@ public class Matrix {
         return generateMat(size, size);
     }
 
-    public double[][] ijkMatMul(double[][] aMat, double[][] bMat) {
-        int n = aMat.length;
+    public double[][] ijkMatMul(double[][] aMat, double[][] bMat) throws MatrixSizeThrowable {
+        if(aMat[0].length != bMat.length){
+            throw new MatrixSizeThrowable("aMat colmunSize should be same bMat rowSize.\n"
+                    + "aMat columnSize = " + aMat[0].length + "\n"
+                    + "bMat rowSize = " + bMat.length);
+        }
+        int n = aMat[0].length;
 
-        double[][] cMat = new double[n][n];
+        double[][] cMat = new double[aMat.length][bMat[0].length];
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < aMat.length; i++) {
+            for (int j = 0; j < bMat[0].length; j++) {
                 for (int k = 0; k < n; k++) {
                     cMat[i][j] += aMat[i][k] * bMat[k][j];
                 }
@@ -40,14 +45,19 @@ public class Matrix {
         return cMat;
     }
 
-    public double[][] ikjMatMul(double[][] aMat, double[][] bMat) {
-        int n = aMat.length;
+    public double[][] ikjMatMul(double[][] aMat, double[][] bMat) throws MatrixSizeThrowable {
+        if(aMat[0].length != bMat.length){
+            throw new MatrixSizeThrowable("aMat colmunSize should be same bMat rowSize.\n"
+                    + "aMat columnSize = " + aMat[0].length + "\n"
+                    + "bMat rowSize = " + bMat.length);
+        }
+        int n = aMat[0].length;
 
-        double[][] cMat = new double[n][n];
+        double[][] cMat = new double[aMat.length][bMat[0].length];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < aMat.length; i++) {
             for (int k = 0; k < n; k++) {
-                for (int j = 0; j < n; j++) {
+                for (int j = 0; j < bMat[0].length; j++) {
                     cMat[i][j] += aMat[i][k] * bMat[k][j];
                 }
             }
@@ -56,16 +66,16 @@ public class Matrix {
         return cMat;
     }
 
-    public void printMat(int[][] myMat) {
+    public void printMat(double[][] myMat) {
         for (int i = 0; i < myMat.length; i++) {
             printRow(myMat[i]);
-            System.out.println();
         }
     }
 
-    private void printRow(int[] myRow) {
+    private void printRow(double[] myRow) {
         for (int i = 0; i < myRow.length; i++) {
             System.out.print(myRow[i] + "\t");
         }
+        System.out.println();
     }
 }
