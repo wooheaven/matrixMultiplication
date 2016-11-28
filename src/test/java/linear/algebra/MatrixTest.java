@@ -15,8 +15,8 @@ public class MatrixTest {
 
     @Before
     public void setUp() throws MatrixSizeThrowable {
-        aMat = mat.generateMat(1000);
-        bMat = mat.generateMat(1000);
+        aMat = mat.generateMat(1000, 1000);
+        bMat = mat.generateMat(1000, 1000);
     }
 
     @Test
