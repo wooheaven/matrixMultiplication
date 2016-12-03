@@ -1,5 +1,7 @@
 package linear.algebra;
 
+import linear.algebra.throwable.MatrixSizeThrowable;
+
 public class RowColMatrix {
     public double[][] generateRowColMatrtix(int rowSize, int colSise) throws MatrixSizeThrowable {
         if (rowSize <= 0) {

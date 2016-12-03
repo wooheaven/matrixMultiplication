@@ -1,5 +1,6 @@
 package linear.algebra;
 
+import linear.algebra.throwable.MatrixSizeThrowable;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.util.StopWatch;
