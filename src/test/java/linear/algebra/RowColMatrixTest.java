@@ -9,43 +9,49 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class RowColMatrixTest {
-    private StopWatch st;
-    private RowColMatrix rowColMatrix;
-    private double[][] aRowColMatrix;
-    private double[][] bRowColMatrix;
-    private double[][] cRowColMatrix;
-    private double[][] dRowColMatrix;
-    private double cMatValue;
-    private double dMatValue;
+    private StopWatch stopWatch;
+    private RowColMatrix matrix;
+    private int aMatrixRowSize;
+    private int aMatrixColSize;
+    private int bMatrixColSize;
+    private double[][] aMatrix;
+    private double[][] bMatrix;
+    private double[][] cMatrix;
+    private double[][] dMatrix;
+    private double cValue;
+    private double dValue;
     private double different;
 
     @Before
     public void setUp() throws MatrixSizeThrowable {
-        st = new StopWatch("RowColMatrix Multiplication");
-        rowColMatrix = new RowColMatrix();
-        aRowColMatrix = rowColMatrix.generateRowColMatrtix(300, 200);
-        bRowColMatrix = rowColMatrix.generateRowColMatrtix(200, 300);
+        stopWatch = new StopWatch("RowColMatrix Multiplication");
+        matrix = new RowColMatrix();
+        aMatrixRowSize = 300;
+        aMatrixColSize = 200;
+        bMatrixColSize = 300;
+        aMatrix = matrix.generateRowColMatrtix(aMatrixRowSize, aMatrixColSize);
+        bMatrix = matrix.generateRowColMatrtix(aMatrixColSize, bMatrixColSize);
     }
 
     @Test
-    public void rowColMatrtixMul() throws MatrixSizeThrowable {
-        st.start("ijk RowColMatrix Multiplication");
-        cRowColMatrix = rowColMatrix.ijkRowColMatrtixMultiplication(aRowColMatrix, bRowColMatrix);
-        st.stop();
+    public void rowColMatrtixMultiplication() throws MatrixSizeThrowable {
+        stopWatch.start("ijk RowColMatrix Multiplication");
+        cMatrix = matrix.ijkRowColMatrtixMultiplication(aMatrix, bMatrix);
+        stopWatch.stop();
 
-        st.start("ikj RowColMatrix Multiplication");
-        dRowColMatrix = rowColMatrix.ikjRowColMatrtixMultiplication(aRowColMatrix, bRowColMatrix);
-        st.stop();
+        stopWatch.start("ikj RowColMatrix Multiplication");
+        dMatrix = matrix.ikjRowColMatrtixMultiplication(aMatrix, bMatrix);
+        stopWatch.stop();
 
-        for (int i = 0; i < cRowColMatrix.length; i++) {
-            for (int j = 0; j < cRowColMatrix[i].length; j++) {
-                cMatValue = cRowColMatrix[i][j];
-                dMatValue = dRowColMatrix[i][j];
-                different = Math.abs(cMatValue - dMatValue);
+        for (int i = 0; i < cMatrix.length; i++) {
+            for (int j = 0; j < cMatrix[i].length; j++) {
+                cValue = cMatrix[i][j];
+                dValue = dMatrix[i][j];
+                different = Math.abs(cValue - dValue);
                 assertThat("Compare RowColMatrix["+i+"]["+j+"] is different", different, is(0.0));
             }
         }
 
-        System.out.println(st.prettyPrint());
+        System.out.println(stopWatch.prettyPrint());
     }
 }

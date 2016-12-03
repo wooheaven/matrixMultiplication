@@ -3,15 +3,15 @@ package linear.algebra;
 import linear.algebra.throwable.MatrixSizeThrowable;
 
 public class RowColMatrix {
-    public double[][] generateRowColMatrtix(int rowSize, int colSise) throws MatrixSizeThrowable {
+    public double[][] generateRowColMatrtix(int rowSize, int colSize) throws MatrixSizeThrowable {
         if (rowSize <= 0) {
-            throw new MatrixSizeThrowable("RowColMatrix size should be more than 0. And the current size is " + rowSize);
+            throw new MatrixSizeThrowable("RowColMatrix rowSize should be more than 0. And the current rowSize is " + rowSize);
         }
-        if (colSise <= 0) {
-            throw new MatrixSizeThrowable("RowColMatrix size should be more than 0. And the current size is " + colSise);
+        if (colSize <= 0) {
+            throw new MatrixSizeThrowable("RowColMatrix columnSise should be more than 0. And the current columnSise is " + colSize);
         }
 
-        double[][] resultRowColMatrix = new double[rowSize][colSise];
+        double[][] resultRowColMatrix = new double[rowSize][colSize];
 
         for (int i = 0; i < resultRowColMatrix.length; i++) {
             for (int j = 0; j < resultRowColMatrix[0].length; j++) {
